@@ -2,17 +2,6 @@
 
 A powerful Machine Learning application that predicts construction project budgets using advanced algorithms and real-world construction parameters.
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Model Details](#model-details)
-- [Project Structure](#project-structure)
-- [API Reference](#api-reference)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## 🎯 Overview
 
 The Construction Budget Predictor is an intelligent ML system designed to estimate construction project costs with high accuracy. It uses a Random Forest Regressor trained on comprehensive construction data to provide reliable budget predictions for various project types.
