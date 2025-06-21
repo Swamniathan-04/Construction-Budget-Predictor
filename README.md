@@ -2,8 +2,12 @@
 
 A powerful Machine Learning application that predicts construction project budgets using advanced algorithms and real-world construction parameters.
 
+## 🌐 **Live Demo**
+**[🚀 Try the App Now](https://construction-budget-predictor.streamlit.app/)**
+
 ## 📋 Table of Contents
 - [Overview](#overview)
+- [Live Demo](#live-demo)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -23,6 +27,18 @@ The Construction Budget Predictor is an intelligent ML system designed to estima
 - **Interactive Web Interface** 🌐
 - **High Accuracy Predictions** 📊
 - **Feature Importance Analysis** 🔍
+
+## 🌐 Live Demo
+
+**🎯 [Try the Construction Budget Predictor Now!](https://construction-budget-predictor.streamlit.app/)**
+
+Experience the app live with:
+- Interactive form inputs
+- Real-time budget predictions
+- Professional UI/UX
+- Instant results
+
+*No installation required - just click and start predicting!*
 
 ## ✨ Features
 
@@ -54,7 +70,7 @@ The Construction Budget Predictor is an intelligent ML system designed to estima
 
 1. **Clone the Repository** 📥
    ```bash
-   git clone https://github.com/yourusername/Construction-Budget-Predictor.git
+   git clone https://github.com/Swamniathan-04/Construction-Budget-Predictor.git
    cd Construction-Budget-Predictor
    ```
 
@@ -70,7 +86,15 @@ The Construction Budget Predictor is an intelligent ML system designed to estima
 
 ## 🚀 Usage
 
-### Method 1: Web Interface (Recommended) 🌐
+### Method 1: Live Web App (Recommended) 🌐
+**[🚀 Access the Live App](https://construction-budget-predictor.streamlit.app/)**
+
+1. **Open the link above**
+2. **Enter your project details**
+3. **Click "Predict Budget"**
+4. **Get instant results!**
+
+### Method 2: Local Web Interface 🌐
 
 1. **Start the Streamlit App**
    ```bash
@@ -86,7 +110,7 @@ The Construction Budget Predictor is an intelligent ML system designed to estima
    - Adjust sliders and select options
    - Click "Predict Budget" to get instant results
 
-### Method 2: Command Line Interface 💻
+### Method 3: Command Line Interface 💻
 
 1. **Run the Prediction Script**
    ```bash
@@ -98,7 +122,7 @@ The Construction Budget Predictor is an intelligent ML system designed to estima
    - Choose construction type and materials quality
    - Get your budget prediction
 
-### Method 3: Train Your Own Model 🧠
+### Method 4: Train Your Own Model 🧠
 
 1. **Run the Training Script**
    ```bash
@@ -278,9 +302,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Email**: support@construction-budget-predictor.com
-- **Issues**: [GitHub Issues](https://github.com/yourusername/Construction-Budget-Predictor/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/Construction-Budget-Predictor/discussions)
+- **Live App**: [https://construction-budget-predictor.streamlit.app/](https://construction-budget-predictor.streamlit.app/)
+- **GitHub**: [https://github.com/Swamniathan-04/Construction-Budget-Predictor](https://github.com/Swamniathan-04/Construction-Budget-Predictor)
+- **Issues**: [GitHub Issues](https://github.com/Swamniathan-04/Construction-Budget-Predictor/issues)
 
 ---
 
@@ -291,5 +315,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen.svg)](https://construction-budget-predictor.streamlit.app/)
 
 </div> 
