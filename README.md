@@ -2,12 +2,8 @@
 
 A powerful Machine Learning application that predicts construction project budgets using advanced algorithms and real-world construction parameters.
 
-## 🌐 **Live Demo**
-**[🚀 Try the App Now](https://construction-budget-predictor.streamlit.app/)**
-
 ## 📋 Table of Contents
 - [Overview](#overview)
-- [Live Demo](#live-demo)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
