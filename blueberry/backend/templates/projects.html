@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f7fa;
+            font-family: 'Arial', sans-serif;
+            transition: all 0.5s ease;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            height: 100%;
+            width: 120px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #2C3E50;
+            padding-top: 20px;
+            padding-left: 5px;
+            transition: all 0.5s ease;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a i {
+            font-size: 20px;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495E;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #34495E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #34495E;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-icon:hover {
+            background-color: #34495E;
+            color: #fff;
+        }
+
+        .content {
+            margin-left: 140px;
+            padding: 30px;
+            transition: margin-left 0.5s ease;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card-body {
+            background-color: #fff;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f4f7fa;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile-icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <a href="{{ url_for('management') }}"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="#"><i class="fas fa-chart-pie"></i><span>Reports</span></a>
+        <a href="{{ url_for('projects_page') }}"><i class="fas fa-folder"></i><span>Projects</span></a>
+        <a href="#"><i class="fas fa-pencil-alt"></i><span>Tasks</span></a>
+        <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="header">
+            <h1>Your Projects</h1>
+        </div>
+
+        <!-- Display Projects -->
+        <div class="row">
+            {% if projects %}
+                {% for project in projects %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ project.name }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>{{ project.description }}</p>
+                                <p><strong>Status:</strong> {{ project.status }}</p>
+                                <form action="{{ url_for('delete_project', project_id=project.id) }}" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-block">Delete Project</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center">No projects found. <a href="{{ url_for('management') }}">Create a new project</a>.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Construction Management System</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

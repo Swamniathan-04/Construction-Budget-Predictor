@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f7fa;
+            font-family: 'Arial', sans-serif;
+            transition: all 0.5s ease;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            height: 100%;
+            width: 120px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #2C3E50;
+            padding-top: 20px;
+            padding-left: 5px;
+            transition: all 0.5s ease;
+        }
+
+        /* Sidebar items */
+        .sidebar a {
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a i {
+            font-size: 20px;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495E;
+        }
+
+        /* Profile icon */
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #34495E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #34495E;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-icon:hover {
+            background-color: #34495E;
+            color: #fff;
+        }
+
+        /* Content area styling */
+        .content {
+            margin-left: 140px;
+            padding: 30px;
+            transition: margin-left 0.5s ease;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card-body {
+            background-color: #fff;
+        }
+
+        /* Header style */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .header .search-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .search-box input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+
+        .header .search-box .search-icon {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        /* Form Styling */
+        .form-group label {
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f4f7fa;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="profile-icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="#"><i class="fas fa-chart-pie"></i><span>Reports</span></a>
+        <a href="#"><i class="fas fa-folder"></i><span>Projects</span></a>
+        <a href="#"><i class="fas fa-pencil-alt"></i><span>Tasks</span></a>
+        <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="header">
+            <h1>Welcome, {{ username }}!</h1>
+            <div class="search-box">
+                <input type="text" placeholder="Search for a project...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>{{ project.name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>{{ project.description }}</p>
+                            <p><strong>Status:</strong> {{ project.status }}</p>
+                            <form action="{{ url_for('delete_project', project_id=project.id) }}" method="POST">
+                                <button type="submit" class="btn btn-danger btn-block">Delete Project</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Create Project Form -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Create a New Project</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('create_project') }}" method="POST">
+                    <div class="form-group">
+                        <label for="project_name">Project Name</label>
+                        <input type="text" class="form-control" id="project_name" name="project_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project_description">Project Description</label>
+                        <textarea class="form-control" id="project_description" name="project_description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">Start Date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">End Date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Project</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Construction Management System</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript for disabling past dates -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('start_date').setAttribute('min', today);
+            document.getElementById('end_date').setAttribute('min', today);
+        });
+    </script>
+</body>
+</html>
